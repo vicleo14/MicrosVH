@@ -3,10 +3,10 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>programa5</name>
-            <creation-uuid>728d4bc1-10fc-450c-a809-60c92487f1bb</creation-uuid>
+            <name>cEmbebido</name>
+            <creation-uuid>deb29743-4fde-44ba-b601-9938ba706a35</creation-uuid>
             <make-project-type>0</make-project-type>
-            <c-extensions/>
+            <c-extensions>c</c-extensions>
             <cpp-extensions/>
             <header-extensions>h</header-extensions>
             <asminc-extensions>inc</asminc-extensions>
@@ -14,7 +14,6 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>.</sourceRootElem>
-                <sourceRootElem>../cEmbebido.X</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
