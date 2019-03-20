@@ -87,6 +87,12 @@ void funcion1();
 short int funcion2();
 short int funcion3(short int, short int);
 short int funcion4(char*);
+
+
+void iniLCD8bits();
+void datoLCD();
+void busyFlagLCD();
+
 short int var;
 int main (void)
 {       
@@ -99,7 +105,19 @@ int main (void)
     dato1=funcion2();
     dato2=funcion3(5,12);
     dato3=funcion4(cadena);
-      
+    
+    iniLCD8bits();
+    busyFlagLCD();
+    datoLCD('h');
+    
+    busyFlagLCD();
+    datoLCD('o');
+    
+    busyFlagLCD();
+    datoLCD('l');
+    
+    busyFlagLCD();
+    datoLCD('a');
     for(;EVER;)
     {
         Nop();
