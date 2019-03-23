@@ -43,6 +43,9 @@ _datoLCD:
     
 _busyFlagLCD:
     ;IMPLEMENTAR
+    BCLR PORTF,#RS_LCD
+    NOP
+    
     return
 _initLCD8bits:
     CALL RETARDO_15ms
