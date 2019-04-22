@@ -85,26 +85,42 @@ void iniPerifericos( void );
 void iniInterrupciones( void );
 extern void iniLCD8bits( void );
 extern void busyFlag( void );
-extern void datoLCD( unsigned char simbolo );
-
+extern void RETARDO15ms( void );
+extern void datoLCD(char* cadena );
+//extern void datoLCD(char valor );
 int main (void)
 {       
-    char cadena[]="hola mundo";
     iniPerifericos();
-    iniInterrupciones();
+    //iniInterrupciones();
       
     iniLCD8bits();
-    /*busyFlag();
+    /*RETARDO15ms();
     datoLCD('H');
-    //CONTINUARA..*/
-    
-    
-     short i=0;
+    RETARDO15ms();
+    datoLCD('o');
+    RETARDO15ms();
+    datoLCD('l');
+    RETARDO15ms();
+    datoLCD('a');
+    RETARDO15ms();
+    datoLCD(' ');
+    RETARDO15ms();
+    datoLCD('M');
+    RETARDO15ms();
+    datoLCD('u');
+    RETARDO15ms();
+    datoLCD('n');
+    RETARDO15ms();
+    datoLCD('d');
+    RETARDO15ms();
+    datoLCD('o');*/
+    datoLCD("Hola Mundo");
+    /*short i=0;
     for(i=0;i<strlen(cadena);i++)
     {
-        busyFlag();
-        datoLCD(cadena[i]);
-    }
+        
+    }*/
+    
     for(;EVER;)
     {
         Nop();
@@ -131,8 +147,19 @@ void iniInterrupciones( void )
 void iniPerifericos( void )
 {
     PORTB = 0;
+    
     LATB = 0;
     TRISB = 0;
+    ADPCFG=1;
+    //PORTFbits.RF2=0;
+    //PORTFbits.RF3=0;
+    //PORTDbits.RD2=0;
+    PORTF=0;
+    LATF=0;
+    TRISF=0;
+    PORTD=0;
+    LATD=0;
+    TRISD=0;
     
     //CONTINUARA...
 }

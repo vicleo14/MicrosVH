@@ -29,11 +29,12 @@ CICLO1_1S:
 _RETARDO15ms:
     PUSH W0
     MOV #0X6BE9, W0
+    ;MOV #0XFFFF, W0
     ;MOV #0X2, W0
     
-    RETARDO:
+    RETARDOA:
     DEC W0,W0
-    BRA NZ,RETARDO
+    BRA NZ,RETARDOA
     
     POP W0
    return
