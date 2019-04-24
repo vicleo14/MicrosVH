@@ -7,31 +7,28 @@
  
  __INT0Interrupt:
     push w0
-    INC.B _uni
+    push w1
     MOV #10,	W0
+    INC.B _uni
     CP.B _uni
     BRA	NZ, fin
-    
+    CLR.B _uni
     INC.B _dece
-    MOV #10,	W0
     CP.B _dece
     BRA	NZ, fin
-    
+    CLR.B _dece
     INC.B _cen
-    MOV #10,	W0
     CP.B _cen
     BRA	NZ, fin
-    
+    CLR.B _cen
     INC.B _umi
-    MOV #10,	W0
     CP.B _umi
     BRA	NZ, fin
-    
-    
-    
+    CLR.B _umi
     fin:
-    BCLR ifs0,	#int0if
+    BCLR IFS0,	#INT0IF
     pop w0
+    pop w1
     retfie
 
 

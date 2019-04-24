@@ -84,6 +84,7 @@ void iniPerifericos( void );
 void iniInterrupciones( void );
 extern void iniLCD8bits( void );
 extern void busyFlag( void );
+extern void RETARDO15ms( void );
 extern void datoLCD( unsigned char simbolo );
 void comandoLCD(char);
 void imprimeLCD(char*);
@@ -99,24 +100,25 @@ int main (void)
     iniInterrupciones();
       
     iniLCD8bits();
-    busyFlag();
+    //busyFlag();
     imprimeLCD("Conteo:");
     //CONTINUARA..
     for(;EVER;)
     {
-        busyFlag();
+        //busyFlag();
+        RETARDO15ms();
         comandoLCD(0X87);
-        
-        busyFlag();
+        //busyFlag();
+        RETARDO15ms();
         datoLCD(umi+0x30);
-        
-        busyFlag();
+        //busyFlag();
+        RETARDO15ms();
         datoLCD(cen+0x30);
-        
-        busyFlag();
+        //busyFlag();
+        RETARDO15ms();
         datoLCD(dece+0x30);
-        
-        busyFlag();
+        //busyFlag();
+        RETARDO15ms();
         datoLCD(uni+0x30);       
         Nop();
     }
@@ -130,8 +132,9 @@ int main (void)
 /****************************************************************************/
 void iniInterrupciones( void )
 {
-    IFS0bits.INT0F=0;
-    INTCONT2bits.INT0EP=0;
+    IFS0bits.INT0IF=0;
+    INTCON2bits.INT0EP=1;
+    IEC0bits.INT0IE=1;
     //IEC0BITS.I
     //Habilitacion de interrupcion del periférico 1
     //Habilitacion de interrupcion del periférico 2
@@ -145,10 +148,23 @@ void iniInterrupciones( void )
 void iniPerifericos( void )
 {
     PORTB = 0;
+    
     LATB = 0;
     TRISB = 0;
-    
-    //CONTINUARA...
+    ADPCFG=1;
+    //PORTFbits.RF2=0;
+    //PORTFbits.RF3=0;
+    //PORTDbits.RD2=0;
+    PORTF=0;
+    LATF=0;
+    TRISF=0;
+    PORTD=0;
+    LATD=0;
+    TRISD=0;
+    //Entrada de INT0
+    PORTAbits.RA11=0;
+    LATAbits.LATA11=0;
+    TRISAbits.TRISA11=1;
 }
 
 /********************************************************************************/
